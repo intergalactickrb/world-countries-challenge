@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07172e">
+<title>World Countries Challenge | UniversalFacts.in</title>
+<meta name="description" content="Take the UniversalFacts World Countries Challenge. Answer 10 questions about countries, capitals, flags, currencies and geography.">
+<style>
+:root{--bg:#061326;--panel:#0d2140;--panel2:#10294c;--line:#234365;--text:#f3f7ff;--muted:#a9bdd6;--cyan:#38c8e8;--gold:#f3c969;--green:#43d69a;--red:#ff737d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#163b67 0%,#07172e 55%,#041020 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+button,input{font:inherit}button{cursor:pointer}.shell{max-width:900px;margin:auto;padding:24px 16px 50px}.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}.logo{font-weight:900;letter-spacing:.4px;font-size:18px}.logo span{color:var(--cyan)}.tag{color:var(--muted);font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
+.card{background:linear-gradient(145deg,rgba(17,43,77,.97),rgba(9,28,53,.97));border:1px solid var(--line);border-radius:22px;padding:clamp(20px,4vw,36px);box-shadow:0 18px 60px #0005}
+.hero{text-align:center;padding:42px 20px}.globe{font-size:54px;margin-bottom:8px}.eyebrow{color:var(--cyan);font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:12px}.hero h1{font-size:clamp(30px,6vw,52px);line-height:1.06;margin:12px 0}.hero p{color:var(--muted);max-width:610px;margin:0 auto 24px;line-height:1.65}.facts{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:22px 0}.pill{border:1px solid var(--line);border-radius:999px;padding:9px 13px;color:#cfe1f5;font-size:13px;background:#071a32}
+.btn{border:0;border-radius:12px;padding:13px 20px;font-weight:800;color:#041527;background:linear-gradient(90deg,#48d2ed,#64b9ff);box-shadow:0 7px 22px #2bb8df30}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn.secondary{background:#18395f;color:var(--text);border:1px solid #31577e;box-shadow:none}.btn.gold{background:linear-gradient(90deg,#f6d987,#e9b64e);color:#241a05}.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.small{font-size:12px;color:var(--muted);line-height:1.5}.section-title{font-size:20px;margin:0 0 14px}.hidden{display:none!important}
+.mode-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}.mode{background:#0a1d37;border:1px solid var(--line);border-radius:15px;padding:16px;text-align:left;color:var(--text)}.mode strong{display:block;margin-bottom:5px}.mode span{color:var(--muted);font-size:12px;line-height:1.4}.mode:hover{border-color:var(--cyan)}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.counter{font-weight:800}.timer{border:1px solid var(--line);background:#081a32;border-radius:999px;padding:9px 14px;font-weight:900;font-variant-numeric:tabular-nums}.timer.warn{color:var(--red);border-color:#a34c59}.progress{height:8px;background:#07182e;border-radius:20px;overflow:hidden;margin-bottom:24px}.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),#6caeff);transition:width .25s}
+.category{font-size:11px;color:var(--cyan);font-weight:900;letter-spacing:1.5px;text-transform:uppercase}.question{font-size:clamp(22px,4vw,31px);line-height:1.25;margin:10px 0 22px}.options{display:grid;grid-template-columns:1fr 1fr;gap:12px}.option{border:1px solid #2a4c70;background:#0a1d37;color:var(--text);border-radius:13px;padding:15px;text-align:left;min-height:62px;display:flex;align-items:center;gap:12px}.option:hover:not(:disabled){border-color:var(--cyan);background:#102b4d}.option .letter{height:29px;width:29px;display:grid;place-items:center;border-radius:8px;background:#19395e;color:#b9d8f6;font-weight:900;flex:none}.option.correct{border-color:var(--green);background:#0c3a36}.option.wrong{border-color:var(--red);background:#421f32}.option:disabled{cursor:default}
+.feedback{margin-top:18px;border-radius:13px;padding:15px;background:#091b32;border:1px solid var(--line);line-height:1.5}.feedback.good{border-color:#267d66}.feedback.bad{border-color:#98505c}.feedback strong{display:block;margin-bottom:4px}.feedback p{margin:5px 0 0;color:#c2d2e4}.nextrow{display:flex;justify-content:flex-end;margin-top:16px}
+.name-input{width:100%;max-width:420px;padding:13px 14px;background:#07182e;color:white;border:1px solid #31577e;border-radius:11px;margin:8px 0 18px;outline:none}.name-input:focus{border-color:var(--cyan)}
+.result-score{font-size:64px;font-weight:950;color:var(--gold);line-height:1}.result-sub{color:var(--muted);margin:8px 0 22px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}.stat{padding:14px;background:#081b33;border:1px solid var(--line);border-radius:13px}.stat b{display:block;font-size:23px}.stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.panel{margin-top:18px;padding:18px;border-radius:15px;background:#081b33;border:1px solid var(--line)}.panel h3{margin:0 0 12px}.leader-row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #1d3857;color:#d8e6f6}.leader-row:last-child{border:0}.leader-row small{color:var(--muted)}.footer{text-align:center;color:#718ba9;font-size:12px;margin-top:24px}.footer a{color:var(--cyan);text-decoration:none}
+@media(max-width:600px){.shell{padding:16px 12px 35px}.brand{margin-bottom:16px}.tag{font-size:10px}.card{border-radius:17px}.hero{padding:30px 16px}.options{grid-template-columns:1fr}.mode-grid{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:11px}.stat b{font-size:20px}.topline{align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="brand"><div class="logo"><span>UNIVERSAL</span>FACTS.in</div><div class="tag">Seeking the Seekers</div></header>
+
+<section id="home" class="card hero">
+  <div class="globe">🌍</div><div class="eyebrow">The global knowledge game</div>
+  <h1>World Countries<br><span style="color:var(--cyan)">Challenge</span></h1>
+  <p>Ten questions. Countries from every corner of the planet. Test what you know, discover something new and earn your explorer certificate.</p>
+  <div class="facts"><span class="pill">10 questions</span><span class="pill">20 seconds each</span><span class="pill">Instant explanations</span><span class="pill">Free certificate</span></div>
+  <div class="actions"><button class="btn" id="startBtn">Start a challenge</button><button class="btn secondary" id="leaderBtn">View leaderboard</button></div>
+  <div class="mode-grid">
+    <button class="mode" id="dailyBtn"><strong>📅 Daily World Challenge</strong><span>One shared set of questions for today's challenge.</span></button>
+    <button class="mode" id="randomBtn"><strong>🎲 Random Challenge</strong><span>A fresh selection from the question bank.</span></button>
+  </div>
+  <p class="small" style="margin:20px auto 0">Your score is saved in this browser. No account required.</p>
+</section>
+
+<section id="quiz" class="card hidden">
+  <div class="topline"><div><div class="eyebrow" id="modeLabel">Random challenge</div><div class="counter" id="counter">Question 1 of 10</div></div><div class="timer" id="timer">20s</div></div>
+  <div class="progress"><div id="progressBar"></div></div>
+  <div class="category" id="category">GEOGRAPHY</div>
+  <h2 class="question" id="question"></h2>
+  <div class="options" id="options"></div>
+  <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+  <div class="nextrow"><button class="btn hidden" id="nextBtn">Next question →</button></div>
+</section>
+
+<section id="result" class="card hidden" style="text-align:center">
+  <div class="eyebrow">Challenge completed</div><h2 style="font-size:30px;margin:10px 0">Your result</h2>
+  <div class="result-score" id="score">0/10</div><div class="result-sub" id="level">Keep exploring!</div>
+  <div class="stats"><div class="stat"><b id="correctStat">0</b><span>Correct</span></div><div class="stat"><b id="wrongStat">0</b><span>Incorrect</span></div><div class="stat"><b id="percentStat">0%</b><span>Accuracy</span></div></div>
+  <div class="panel" style="text-align:left">
+    <h3>Get your certificate</h3><label for="visitorName" class="small">Enter your name as you want it printed:</label><br>
+    <input id="visitorName" class="name-input" maxlength="40" placeholder="Your name" autocomplete="name">
+    <div class="actions"><button class="btn gold" id="pngBtn">Download PNG</button><button class="btn secondary" id="pdfBtn">Download PDF</button></div>
+    <p class="small">This is a virtual game achievement certificate issued by UniversalFacts.in, not an accredited qualification.</p>
+  </div>
+  <div class="actions" style="margin-top:18px"><button class="btn" id="shareBtn">Challenge a friend</button><button class="btn secondary" id="againBtn">Play again</button><button class="btn secondary" id="homeBtn">Home</button></div>
+  <div class="panel" style="text-align:left"><h3>Leaderboard on this device</h3><div id="resultLeaders"></div></div>
+</section>
+
+<section id="leaderboard" class="card hidden">
+  <div class="eyebrow">Hall of explorers</div><h2 class="section-title" style="font-size:30px">Leaderboard</h2>
+  <p class="small">Scores saved on this browser only. Visitors on other devices have separate lists.</p>
+  <div id="leaderList" class="panel"></div>
+  <div class="actions" style="margin-top:18px"><button class="btn secondary" id="backBtn">Back</button><button class="btn secondary" id="clearBtn">Clear this device's scores</button></div>
+</section>
+<footer class="footer">© <span id="year"></span> <a href="https://universalfacts.in" target="_blank" rel="noopener">UniversalFacts.in</a> · Seeking the Seekers</footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+"use strict";
+const QUESTIONS = [
+{id:"q01",cat:"CAPITALS",q:"What is the capital city of Kazakhstan?",a:["Almaty","Astana","Bishkek","Tashkent"],c:1,e:"Astana is Kazakhstan's capital. Almaty was the capital until 1997 and remains the country's largest city."},
+{id:"q02",cat:"CURRENCIES",q:"Which country uses the forint as its currency?",a:["Poland","Romania","Hungary","Croatia"],c:2,e:"Hungary uses the forint (HUF). Its name comes from the Italian word for Florence, where gold coins were minted."},
+{id:"q03",cat:"GEOGRAPHY",q:"Which is the world's largest island that is not a continent?",a:["Borneo","Madagascar","Greenland","New Guinea"],c:2,e:"Greenland is the largest island in the world when Australia is treated as a continent."},
+{id:"q04",cat:"LANDMARKS",q:"Petra, famous for its rock-cut architecture, is in which country?",a:["Jordan","Egypt","Lebanon","Oman"],c:0,e:"Petra is an ancient city in southern Jordan, renowned for structures carved into rose-coloured rock."},
+{id:"q05",cat:"FLAGS",q:"Which country's flag features a red maple leaf?",a:["Austria","Canada","Denmark","Peru"],c:1,e:"Canada's red-and-white flag features a stylised 11-point maple leaf, officially adopted in 1965."},
+{id:"q06",cat:"CONTINENTS",q:"Which country is located in both Europe and Asia?",a:["Portugal","Georgia","Ireland","Iceland"],c:1,e:"Georgia lies in the Caucasus region, at the crossroads of Europe and Asia."},
+{id:"q07",cat:"CAPITALS",q:"What is the capital of New Zealand?",a:["Auckland","Christchurch","Wellington","Hamilton"],c:2,e:"Wellington is New Zealand's capital, located at the southern tip of the North Island."},
+{id:"q08",cat:"GEOGRAPHY",q:"Which African country is completely surrounded by South Africa?",a:["Eswatini","Lesotho","Botswana","Namibia"],c:1,e:"Lesotho is an enclave entirely surrounded by South Africa. It is also one of the world's highest-altitude countries."},
+{id:"q09",cat:"CURRENCIES",q:"The yen is the currency of which country?",a:["China","Japan","South Korea","Thailand"],c:1,e:"The Japanese yen is one of the world's major traded currencies."},
+{id:"q10",cat:"LANDMARKS",q:"Machu Picchu is a historic site in which country?",a:["Chile","Bolivia","Peru","Ecuador"],c:2,e:"Machu Picchu is a 15th-century Inca site in the Andes of Peru."},
+{id:"q11",cat:"CAPITALS",q:"What is the capital of Morocco?",a:["Casablanca","Marrakesh","Rabat","Fez"],c:2,e:"Rabat is Morocco's capital. Casablanca is its largest city and an important economic centre."},
+{id:"q12",cat:"GEOGRAPHY",q:"Which country has the greatest number of natural lakes?",a:["Russia","Canada","Finland","United States"],c:1,e:"Canada has more lakes than any other country, including a large share of the world's natural lake area."},
+{id:"q13",cat:"FLAGS",q:"Which country has a cedar tree on its national flag?",a:["Cyprus","Lebanon","Malta","Tunisia"],c:1,e:"The Lebanese flag features a green cedar tree, a long-standing symbol associated with the country."},
+{id:"q14",cat:"CAPITALS",q:"What is the capital of Iceland?",a:["Oslo","Helsinki","Reykjavík","Nuuk"],c:2,e:"Reykjavík is Iceland's capital and its largest city."},
+{id:"q15",cat:"GEOGRAPHY",q:"Which country is often described as the world's only doubly landlocked country?",a:["Mongolia","Uzbekistan","Nepal","Chad"],c:1,e:"Uzbekistan is doubly landlocked: every country bordering it is also landlocked."},
+{id:"q16",cat:"LANDMARKS",q:"The ancient city of Angkor is located in which country?",a:["Laos","Cambodia","Vietnam","Myanmar"],c:1,e:"Angkor, including Angkor Wat, is a vast temple complex in Cambodia and a major symbol of Khmer civilisation."},
+{id:"q17",cat:"CURRENCIES",q:"Which country uses the rand?",a:["South Africa","Kenya","Nigeria","Ghana"],c:0,e:"The South African rand is named after the Witwatersrand ridge, associated with the country's gold deposits."},
+{id:"q18",cat:"CAPITALS",q:"What is the capital of Bhutan?",a:["Paro","Punakha","Thimphu","Phuntsholing"],c:2,e:"Thimphu is Bhutan's capital. It is one of the few national capitals without traffic lights."},
+{id:"q19",cat:"GEOGRAPHY",q:"Which country is home to the Atacama Desert?",a:["Argentina","Peru","Chile","Mexico"],c:2,e:"The Atacama Desert lies in northern Chile and is among the driest non-polar deserts on Earth."},
+{id:"q20",cat:"CAPITALS",q:"What is the capital of Türkiye?",a:["Istanbul","Izmir","Ankara","Antalya"],c:2,e:"Ankara is Türkiye's capital. Istanbul is the country's largest city and a historic imperial centre."},
+{id:"q21",cat:"FLAGS",q:"Which country has a flag that is not rectangular or square?",a:["Nepal","Qatar","Switzerland","Jamaica"],c:0,e:"Nepal's national flag is made of two stacked triangular pennants, making it unique among national flags."},
+{id:"q22",cat:"GEOGRAPHY",q:"Which is the smallest independent country in the world by area?",a:["Monaco","Nauru","Vatican City","San Marino"],c:2,e:"Vatican City covers roughly 0.49 square kilometres and is the world's smallest sovereign state by area."},
+{id:"q23",cat:"LANDMARKS",q:"The Sagrada Família is a famous basilica in which country?",a:["Italy","Spain","France","Portugal"],c:1,e:"Antoni Gaudí's Sagrada Família is in Barcelona, Spain. Construction began in 1882."},
+{id:"q24",cat:"CAPITALS",q:"What is the capital of Ethiopia?",a:["Nairobi","Addis Ababa","Asmara","Khartoum"],c:1,e:"Addis Ababa means 'new flower' in Amharic and hosts the headquarters of the African Union."},
+{id:"q25",cat:"CURRENCIES",q:"Which country uses the baht?",a:["Cambodia","Thailand","Malaysia","Laos"],c:1,e:"The baht is Thailand's official currency."},
+{id:"q26",cat:"GEOGRAPHY",q:"Which country contains the world's largest tropical rainforest?",a:["Indonesia","Brazil","Democratic Republic of the Congo","Colombia"],c:1,e:"Most of the Amazon rainforest lies in Brazil, although it extends into several other South American countries."},
+{id:"q27",cat:"CAPITALS",q:"What is the capital of Canada?",a:["Toronto","Vancouver","Ottawa","Montreal"],c:2,e:"Ottawa is Canada's capital, located in Ontario near the border with Quebec."},
+{id:"q28",cat:"LANDMARKS",q:"The ancient city of Timbuktu is in which country?",a:["Niger","Mali","Senegal","Mauritania"],c:1,e:"Timbuktu in Mali was a historic centre of trans-Saharan trade and Islamic scholarship."},
+{id:"q29",cat:"GEOGRAPHY",q:"Which country has the longest coastline in the world?",a:["Australia","Russia","Canada","Indonesia"],c:2,e:"Canada has the world's longest coastline, bordering the Atlantic, Pacific and Arctic oceans."},
+{id:"q30",cat:"CAPITALS",q:"What is the capital of Argentina?",a:["Córdoba","Buenos Aires","Rosario","Mendoza"],c:1,e:"Buenos Aires is Argentina's capital and largest city, situated on the Río de la Plata."},
+{id:"q31",cat:"FLAGS",q:"Which country has a flag with a white cross on a red background?",a:["Switzerland","Austria","Latvia","Poland"],c:0,e:"Switzerland's square national flag has a bold white equilateral cross on a red field."},
+{id:"q32",cat:"GEOGRAPHY",q:"Which country is home to Mount Kilimanjaro?",a:["Kenya","Tanzania","Uganda","Rwanda"],c:1,e:"Mount Kilimanjaro is in Tanzania. Its highest point, Uhuru Peak, is Africa's highest elevation."},
+{id:"q33",cat:"CAPITALS",q:"What is the capital of South Korea?",a:["Busan","Seoul","Incheon","Daegu"],c:1,e:"Seoul is South Korea's capital and a major centre for technology, culture and business."},
+{id:"q34",cat:"CURRENCIES",q:"The krona is the currency of which country?",a:["Sweden","Switzerland","Belgium","Netherlands"],c:0,e:"Sweden uses the krona (plural kronor). Several other Nordic countries have similarly named currencies."},
+{id:"q35",cat:"GEOGRAPHY",q:"Which country is both the largest in South America by area and population?",a:["Argentina","Brazil","Colombia","Peru"],c:1,e:"Brazil occupies nearly half of South America's land area and is the continent's most populous country."},
+{id:"q36",cat:"LANDMARKS",q:"The Blue Mosque is a famous landmark in which city?",a:["Cairo","Istanbul","Tehran","Baku"],c:1,e:"The Sultan Ahmed Mosque, widely known as the Blue Mosque, stands in Istanbul, Türkiye."},
+{id:"q37",cat:"CAPITALS",q:"What is the capital of Senegal?",a:["Dakar","Bamako","Conakry","Banjul"],c:0,e:"Dakar is Senegal's capital, located on the Cap-Vert peninsula, the westernmost point of mainland Africa."},
+{id:"q38",cat:"GEOGRAPHY",q:"Which country has the most time zones when its overseas territories are included?",a:["Russia","United States","France","United Kingdom"],c:2,e:"France has the most time zones when its overseas territories are counted, due to territories around the world."},
+{id:"q39",cat:"CAPITALS",q:"What is the capital of Mongolia?",a:["Erdenet","Ulaanbaatar","Darkhan","Karakorum"],c:1,e:"Ulaanbaatar is Mongolia's capital and by far its largest city."},
+{id:"q40",cat:"GEOGRAPHY",q:"Which two countries share the world's longest international land border?",a:["China and Russia","United States and Canada","Argentina and Chile","India and Bangladesh"],c:1,e:"The United States–Canada border is the world's longest international land border, including the Alaska–Canada section."},
+{id:"q41",cat:"CURRENCIES",q:"Which country uses the dirham as its currency?",a:["Morocco","Egypt","Türkiye","Greece"],c:0,e:"Morocco's currency is the Moroccan dirham. The United Arab Emirates also uses a currency called the dirham."},
+{id:"q42",cat:"CAPITALS",q:"What is the capital of Finland?",a:["Stockholm","Oslo","Helsinki","Tallinn"],c:2,e:"Helsinki is Finland's capital, situated on the shore of the Gulf of Finland."},
+{id:"q43",cat:"GEOGRAPHY",q:"Which country is known as the Land of a Thousand Lakes?",a:["Norway","Finland","Iceland","Estonia"],c:1,e:"Finland is often called the Land of a Thousand Lakes, although it has far more than a thousand."},
+{id:"q44",cat:"LANDMARKS",q:"The Great Sphinx stands near which ancient Egyptian site?",a:["Luxor","Giza","Alexandria","Aswan"],c:1,e:"The Great Sphinx of Giza stands on the Giza Plateau, near the famous pyramids."},
+{id:"q45",cat:"CAPITALS",q:"What is the capital of Portugal?",a:["Porto","Lisbon","Faro","Braga"],c:1,e:"Lisbon is Portugal's capital and largest city, located near the Atlantic coast."},
+{id:"q46",cat:"GEOGRAPHY",q:"Which country is the world's largest archipelagic state by area?",a:["Philippines","Japan","Indonesia","Maldives"],c:2,e:"Indonesia is a vast Southeast Asian archipelago made up of thousands of islands."},
+{id:"q47",cat:"FLAGS",q:"Which country has a red circle centred on a white flag?",a:["Bangladesh","Japan","Palau","South Korea"],c:1,e:"Japan's flag features a red disc representing the sun on a white field."},
+{id:"q48",cat:"CAPITALS",q:"What is the capital of Kenya?",a:["Mombasa","Kisumu","Nairobi","Nakuru"],c:2,e:"Nairobi is Kenya's capital and a major regional hub in East Africa."},
+{id:"q49",cat:"GEOGRAPHY",q:"Which country is home to the world's highest uninterrupted waterfall, Angel Falls?",a:["Brazil","Venezuela","Guyana","Colombia"],c:1,e:"Angel Falls is in Venezuela's Canaima National Park. Its total height is about 979 metres."},
+{id:"q50",cat:"CURRENCIES",q:"Which country uses the zloty?",a:["Czechia","Slovakia","Poland","Lithuania"],c:2,e:"The Polish złoty is Poland's official currency; its name means 'golden' in Polish."}
+];
+
+const $=id=>document.getElementById(id);
+const screens=["home","quiz","result","leaderboard"];
+let current=[],index=0,score=0,remaining=20,timerId=null,locked=false,mode="random",lastResult=null;
+const STORAGE="uf_world_challenge_scores_v1";
+$("year").textContent=new Date().getFullYear();
+function show(id){screens.forEach(s=>$(s).classList.toggle("hidden",s!==id));window.scrollTo({top:0,behavior:"smooth"});}
+function shuffle(arr,seed){let a=arr.slice(),x=seed>>>0;for(let i=a.length-1;i>0;i--){x=(x*1664525+1013904223)>>>0;let j=x%(i+1);[a[i],a[j]]=[a[j],a[i]];}return a;}
+function dateKey(){let d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+function hash(str){let h=2166136261;for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
+function getDaily(){return shuffle(QUESTIONS,hash("UniversalFacts-"+dateKey())).slice(0,10);}
+function startGame(which,ids=null){
+ mode=which;current=ids?ids.map(id=>QUESTIONS.find(q=>q.id===id)).filter(Boolean):which==="daily"?getDaily():shuffle(QUESTIONS,Math.floor(Math.random()*4294967295)).slice(0,10);
+ if(current.length!==10){current=shuffle(QUESTIONS,Date.now()).slice(0,10);}
+ index=0;score=0;lastResult=null;$("modeLabel").textContent=mode==="daily"?"Daily World Challenge":mode==="friend"?"Friend Challenge":"Random Challenge";show("quiz");renderQuestion();
+}
+function renderQuestion(){
+ clearInterval(timerId);locked=false;remaining=20;
+ const q=current[index];$("counter").textContent=`Question ${index+1} of 10`;$("timer").textContent="20s";$("timer").classList.remove("warn");
+ $("progressBar").style.width=((index)/10*100)+"%";$("category").textContent=q.cat;$("question").textContent=q.q;$("feedback").classList.add("hidden");$("nextBtn").classList.add("hidden");
+ $("options").innerHTML="";
+ const letters=["A","B","C","D"];
+ q.a.forEach((answer,i)=>{let b=document.createElement("button");b.className="option";b.innerHTML=`<span class="letter">${letters[i]}</span><span></span>`;b.querySelector("span:last-child").textContent=answer;b.addEventListener("click",()=>choose(i));$("options").appendChild(b);});
+ timerId=setInterval(()=>{remaining--;$("timer").textContent=remaining+"s";if(remaining<=5)$("timer").classList.add("warn");if(remaining<=0){clearInterval(timerId);choose(-1);}},1000);
+}
+function choose(choice){
+ if(locked)return;locked=true;clearInterval(timerId);let q=current[index],correct=choice===q.c;if(correct)score++;
+ [...$("options").children].forEach((b,i)=>{b.disabled=true;if(i===q.c)b.classList.add("correct");else if(i===choice)b.classList.add("wrong");});
+ let f=$("feedback");f.className="feedback "+(correct?"good":"bad");f.innerHTML=`<strong>${correct?"✓ Correct!":choice===-1?"⌛ Time's up!":"✕ Not quite."} The answer is ${escapeHtml(q.a[q.c])}.</strong><p>${escapeHtml(q.e)}</p>`;f.classList.remove("hidden");
+ $("progressBar").style.width=((index+1)/10*100)+"%";$("nextBtn").textContent=index===9?"See my result →":"Next question →";$("nextBtn").classList.remove("hidden");
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+$("nextBtn").addEventListener("click",()=>{if(!locked)return;if(index<9){index++;renderQuestion();}else finish();});
+function getScores(){try{return JSON.parse(localStorage.getItem(STORAGE)||"[]");}catch(e){return[];}}
+function saveScore(){let entry={name:"Explorer",score,mode,date:new Date().toISOString(),day:dateKey()};let arr=getScores();arr.push(entry);arr.sort((a,b)=>b.score-a.score||new Date(a.date)-new Date(b.date));arr=arr.slice(0,50);localStorage.setItem(STORAGE,JSON.stringify(arr));}
+function levelFor(s){return s===10?"Global Expert":s>=8?"World Explorer":s>=6?"Geography Enthusiast":s>=4?"Curious Traveller":"Beginner Explorer";}
+function finish(){clearInterval(timerId);lastResult={score,mode,ids:current.map(q=>q.id)};saveScore();$("score").textContent=score+"/10";$("level").textContent=levelFor(score);$("correctStat").textContent=score;$("wrongStat").textContent=10-score;$("percentStat").textContent=(score*10)+"%";renderLeaders("resultLeaders");show("result");}
+function renderLeaders(target){let arr=getScores().slice(0,10);$(target).innerHTML=arr.length?arr.map((r,i)=>`<div class="leader-row"><span>${i+1}. ${escapeHtml(r.name||"Explorer")} <small>· ${new Date(r.date).toLocaleDateString()}</small></span><b>${r.score}/10</b></div>`).join(""):'<p class="small">No scores saved yet. Complete a challenge to appear here.</p>';}
+function showLeaders(){renderLeaders("leaderList");show("leaderboard");}
+$("startBtn").onclick=()=>startGame("random");$("randomBtn").onclick=()=>startGame("random");$("dailyBtn").onclick=()=>startGame("daily");$("leaderBtn").onclick=showLeaders;$("backBtn").onclick=()=>show("home");$("homeBtn").onclick=()=>show("home");$("againBtn").onclick=()=>startGame("random");
+$("clearBtn").onclick=()=>{if(confirm("Clear all leaderboard scores saved in this browser?")){localStorage.removeItem(STORAGE);renderLeaders("leaderList");}};
+function friendUrl(){let u=new URL(location.href);u.search="";u.searchParams.set("challenge","1");u.searchParams.set("ids",lastResult.ids.join(","));return u.toString();}
+$("shareBtn").onclick=async()=>{let text=`I scored ${lastResult.score}/10 in the UniversalFacts World Countries Challenge! Can you beat my score?`;let url=friendUrl();if(navigator.share){try{await navigator.share({title:"World Countries Challenge",text,url});}catch(e){}}else{try{await navigator.clipboard.writeText(text+" "+url);alert("Challenge link copied. Share it with a friend!");}catch(e){prompt("Copy this challenge link:",url);}}};
+function makeCertificate(name){
+ const canvas=document.createElement("canvas");canvas.width=1600;canvas.height=1100;const c=canvas.getContext("2d");
+ const grad=c.createLinearGradient(0,0,1600,1100);grad.addColorStop(0,"#07172e");grad.addColorStop(1,"#102f55");c.fillStyle=grad;c.fillRect(0,0,1600,1100);
+ c.strokeStyle="#e8c56d";c.lineWidth=12;c.strokeRect(42,42,1516,1016);c.strokeStyle="#4cc8e7";c.lineWidth=3;c.strokeRect(65,65,1470,970);
+ c.globalAlpha=.08;c.fillStyle="#ffffff";c.font="bold 300px Arial";c.textAlign="center";c.fillText("🌍",800,720);c.globalAlpha=1;
+ c.textAlign="center";c.fillStyle="#53d5ee";c.font="bold 34px Arial";c.fillText("UNIVERSALFACTS.IN",800,165);
+ c.fillStyle="#f5f7fc";c.font="bold 78px Georgia";c.fillText("CERTIFICATE OF ACHIEVEMENT",800,290);
+ c.fillStyle="#d6e4f3";c.font="34px Arial";c.fillText("WORLD COUNTRIES CHALLENGE",800,365);
+ c.fillStyle="#c4d4e8";c.font="italic 34px Georgia";c.fillText("This certificate is proudly presented to",800,475);
+ c.fillStyle="#f3cd72";c.font="bold 76px Georgia";c.fillText(name,800,585);
+ c.fillStyle="#d6e4f3";c.font="32px Arial";c.fillText("for completing the 10-question global knowledge challenge",800,660);
+ c.fillStyle="#ffffff";c.font="bold 62px Arial";c.fillText(`${lastResult.score} / 10`,800,780);
+ c.fillStyle="#55d3ed";c.font="bold 30px Arial";c.fillText(levelFor(lastResult.score).toUpperCase(),800,835);
+ c.fillStyle="#c1d1e3";c.font="25px Arial";c.fillText("DATE: "+new Date().toLocaleDateString(),500,940);
+ c.fillText("CERTIFICATE ID: UF-"+dateKey().replace(/-/g,"")+"-"+Math.random().toString(36).slice(2,8).toUpperCase(),1100,940);
+ c.fillStyle="#8fa9c7";c.font="22px Arial";c.fillText("A virtual quiz achievement · Not an accredited qualification",800,1000);
+ return canvas;
+}
+function certificateCanvas(){let n=$("visitorName").value.trim();if(!n){$("visitorName").focus();alert("Please enter your name first.");return null;}return makeCertificate(n);}
+$("pngBtn").onclick=()=>{let cv=certificateCanvas();if(!cv)return;let a=document.createElement("a");a.download="UniversalFacts-World-Challenge-Certificate.png";a.href=cv.toDataURL("image/png");a.click();};
+$("pdfBtn").onclick=()=>{let cv=certificateCanvas();if(!cv)return;if(!window.jspdf){alert("PDF library could not load. Please try again or download the PNG.");return;}let {jsPDF}=window.jspdf;let pdf=new jsPDF({orientation:"landscape",unit:"mm",format:"a4"});pdf.addImage(cv.toDataURL("image/png"),"PNG",0,0,297,210);pdf.save("UniversalFacts-World-Challenge-Certificate.pdf");};
+const params=new URLSearchParams(location.search);if(params.get("challenge")==="1"&&params.get("ids")){let ids=params.get("ids").split(",").slice(0,10);startGame("friend",ids);}else if(params.get("daily")==="1"){startGame("daily");}
+</script>
+</body>
+</html>
